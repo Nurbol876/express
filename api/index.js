@@ -1,41 +1,24 @@
 const express = require("express");
-const app = express();
-const PORT = 3000;
 const cors = require("cors");
 
+const app = express();
+
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 
 app.get("/api/hello", (req, res) => {
-    res.json({ message: "Hello from my API!" });
+    res.json({ message: "Hello from my public API!" });
 });
 
 app.get("/", (req, res) => {
-    res.send({
-        users:[
-            {
-                id:1,
-                name: "nurbol",
-                password: "nigger2020"
-            },
-            {
-                id:2,
-                name: "nurbol",
-                password: "nigger2020"
-            },
-            {
-                id:3,
-                name: "nurbol",
-                password: "nigger2020"
-            },
-            {
-                id:4,
-                name: "nurbol",
-                password: "nigger2020"
-            }
-        ]
+    res.json({
+        users: [
+            { id: 1, name: "Nurbol", password: "12345" },
+            { id: 2, name: "Aibek", password: "qwerty" },
+            { id: 3, name: "Asel", password: "test123" },
+            { id: 4, name: "Dana", password: "pass123" },
+        ],
     });
 });
 
-
-app.listen(PORT, () => console.log(`API running on http://localhost:${PORT}`));
+module.exports = app;
